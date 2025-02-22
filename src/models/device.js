@@ -11,7 +11,7 @@ const Device = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    categoryId: {
+    Category: {
       type: DataTypes.INTEGER,
       references: {
         model: "categories",
