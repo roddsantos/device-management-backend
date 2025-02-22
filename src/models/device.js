@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
+const Category = require("./category");
 
 const Device = sequelize.define(
   "Device",
@@ -10,13 +11,15 @@ const Device = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    Category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "categories",
+        key: "Id",
+      },
     },
     Color: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(16),
       allowNull: false,
       validate: {
         len: [1, 16],
@@ -25,15 +28,16 @@ const Device = sequelize.define(
     partNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      validate: {
-        min: 1,
-        max: 999999,
-      },
     },
   },
   {
     timestamps: true,
   }
 );
+
+Device.hasOne(Category, {
+  as: "categoryId",
+  foreignKey: "id",
+});
 
 module.exports = Device;
