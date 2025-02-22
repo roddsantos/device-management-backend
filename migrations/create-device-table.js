@@ -16,7 +16,7 @@ module.exports = {
         type: DataTypes.INTEGER,
         references: {
           model: "categories",
-          key: "Id",
+          key: "id",
         },
       },
       color: {

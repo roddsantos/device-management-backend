@@ -14,12 +14,12 @@ const doc = {
   components: {
     schemas: {
       category: {
-        Name: "Tablet",
+        name: "Tablet",
       },
       categories: [
         {
-          Id: 1,
-          Name: "Tablet",
+          id: 1,
+          name: "Tablet",
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
           deleteAt: null,
@@ -34,8 +34,8 @@ const doc = {
         {
           id: 1,
           category: {
-            Id: 1,
-            Name: "Tablet",
+            id: 1,
+            name: "Tablet",
           },
           color: "azul",
           partNumber: 40293,
@@ -44,8 +44,8 @@ const doc = {
         },
       ],
       categoryResponse: {
-        Id: 1,
-        Name: "Tablet",
+        id: 1,
+        name: "Tablet",
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         deleteAt: null,
@@ -53,8 +53,8 @@ const doc = {
       deviceResponse: {
         id: 1,
         category: {
-          Id: 1,
-          Name: "Tablet",
+          id: 1,
+          name: "Tablet",
         },
         color: "azul",
         partNumber: 40293,

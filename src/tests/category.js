@@ -26,7 +26,7 @@ describe("Category controller", () => {
 
   test("PATCH /category should return 204 (no data to update sent)", async () => {
     const req = mockRequest();
-    req.body = { Id: 1 };
+    req.body = { id: 1 };
     const res = mockResponse();
     await CategoryControllers.update(req, res);
 
@@ -37,7 +37,7 @@ describe("Category controller", () => {
 
   test("PATCH /category should return 400 (no id sent)", async () => {
     const req = mockRequest();
-    req.body = { Id: 1 };
+    req.body = { id: 1 };
     const res = mockResponse();
     await CategoryControllers.update(req, res);
 
@@ -53,6 +53,6 @@ describe("Category controller", () => {
 
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.send).toHaveBeenCalledTimes(1);
-    expect(res.send).toHaveBeenCalledWith({ message: "Id field is required" });
+    expect(res.send).toHaveBeenCalledWith({ message: "id field is required" });
   });
 });

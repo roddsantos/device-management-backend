@@ -15,7 +15,7 @@ const Device = sequelize.define(
       type: DataTypes.INTEGER,
       references: {
         model: "categories",
-        key: "Id",
+        key: "id",
       },
     },
     color: {
