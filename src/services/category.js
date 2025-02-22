@@ -32,4 +32,34 @@ module.exports = {
       };
     }
   },
+
+  getAll: async () => {
+    try {
+      let categories = await Category.findAll();
+      return {
+        status: 200,
+        data: categories,
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        data: { message: error.message || "Error fetching categories" },
+      };
+    }
+  },
+
+  delete: async (Id) => {
+    try {
+      let result = await Category.destroy({ where: { Id } });
+      return {
+        status: 200,
+        data: { message: "Category successfully deleted" },
+      };
+    } catch (error) {
+      return {
+        status: 500,
+        data: { message: error.message || "Error deleting category" },
+      };
+    }
+  },
 };
