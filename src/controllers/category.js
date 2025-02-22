@@ -2,9 +2,9 @@ const { CategoryServices } = require("../services");
 
 module.exports = {
   create: async (req, res) => {
-    if (Boolean(req.body.Name))
+    if (!Boolean(req.body.Name))
       return res.status(400).send({
-        message: "Category field is empty",
+        message: "Name field is empty",
       });
 
     const Name = req.body.Name;
@@ -16,11 +16,11 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    if (Boolean(req.body.Name))
+    if (!Boolean(req.body.Name))
       return res.status(400).send({
         message: "No data to update",
       });
-    if (Boolean(req.body.Id))
+    if (!Boolean(req.body.Id))
       return res.status(400).send({
         message: "Id field is required",
       });
@@ -43,7 +43,7 @@ module.exports = {
   },
 
   delete: async (req, res) => {
-    if (Boolean(req.params.id))
+    if (!Boolean(req.params.id))
       return res.status(400).send({
         message: "Id field is required",
       });
