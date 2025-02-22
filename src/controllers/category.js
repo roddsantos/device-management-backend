@@ -17,7 +17,7 @@ module.exports = {
 
   update: async (req, res) => {
     if (!Boolean(req.body.Name))
-      return res.status(400).send({
+      return res.status(204).send({
         message: "No data to update",
       });
     if (!Boolean(req.body.Id))
