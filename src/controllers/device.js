@@ -11,6 +11,11 @@ module.exports = {
         message: "Some fields are missing",
       });
 
+    if (req.body.partNumber > 999999 || req.body.partNumber < 1)
+      return res.status(400).send({
+        message: "PartNumber is not a valid number",
+      });
+
     const data = req.body;
     const result = await DeviceServices.create(data);
 
@@ -24,6 +29,13 @@ module.exports = {
       return res.status(400).send({
         message: "id field is required",
       });
+
+    if (req.body.partNumber) {
+      if (req.body.partNumber > 999999 || req.body.partNumber < 1)
+        return res.status(400).send({
+          message: "PartNumber is not a valid number",
+        });
+    }
 
     const data = req.body;
     const Id = req.body.id;
