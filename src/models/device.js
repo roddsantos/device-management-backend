@@ -35,9 +35,12 @@ const Device = sequelize.define(
   }
 );
 
-Device.hasOne(Category, {
-  as: "categoryId",
-  foreignKey: "id",
+Category.hasMany(Device, {
+  constraints: false,
+});
+Device.belongsTo(Category, {
+  as: "CategoryData",
+  foreignKey: "Category",
 });
 
 module.exports = Device;

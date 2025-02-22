@@ -39,8 +39,8 @@ module.exports = {
       let result = await Device.findAll({
         include: [
           {
-            Category: Category,
-            as: Category,
+            model: Category,
+            as: "CategoryData",
             attributes: ["Id", "Name"],
           },
         ],

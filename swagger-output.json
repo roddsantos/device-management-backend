@@ -140,6 +140,27 @@
           }
         }
       }
+    },
+    "/device": {
+      "get": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Get all devices",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/devices"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -168,11 +189,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "2025-02-22T16:26:11.509Z"
+              "example": "2025-02-22T17:07:16.939Z"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2025-02-22T16:26:11.510Z"
+              "example": "2025-02-22T17:07:16.940Z"
             },
             "deleteAt": {}
           }
@@ -195,6 +216,38 @@
           }
         }
       },
+      "devices": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "number",
+              "example": 1
+            },
+            "categoryId": {
+              "type": "number",
+              "example": 1
+            },
+            "Color": {
+              "type": "string",
+              "example": "azul"
+            },
+            "partNumber": {
+              "type": "number",
+              "example": 40293
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2025-02-22T17:07:16.940Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2025-02-22T17:07:16.940Z"
+            }
+          }
+        }
+      },
       "categoryResponse": {
         "type": "object",
         "properties": {
@@ -208,11 +261,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T16:26:11.510Z"
+            "example": "2025-02-22T17:07:16.940Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T16:26:11.510Z"
+            "example": "2025-02-22T17:07:16.940Z"
           },
           "deleteAt": {}
         }
@@ -238,39 +291,26 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T16:26:11.510Z"
+            "example": "2025-02-22T17:07:16.940Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T16:26:11.510Z"
+            "example": "2025-02-22T17:07:16.940Z"
           }
         }
       },
       "internalError": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "number",
-            "example": 500
-          },
-          "data": {
-            "type": "object",
-            "properties": {
-              "message": {
-                "type": "string",
-                "example": "Message error"
-              }
-            }
+          "message": {
+            "type": "string",
+            "example": "Message error"
           }
         }
       },
       "deleteResponse": {
         "type": "object",
         "properties": {
-          "status": {
-            "type": "number",
-            "example": 200
-          },
           "message": {
             "type": "string",
             "example": "Successfully deleted"

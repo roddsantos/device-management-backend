@@ -109,19 +109,20 @@ router.delete("/category/:id", (req, res) => {
 });
 
 router.get("/device", (req, res) => {
+  /*
+    #swagger.tags = ['Device']
+    #swagger.summary = 'Get all devices'
+    #swagger.responses[200] = {
+      content: {
+        "application/json": {
+          schema:{
+            $ref: "#/components/schemas/devices"
+          }
+        }           
+      }
+    }
+  */
   DeviceControllers.getAll(req, res);
-});
-
-router.patch("/device", (req, res) => {
-  DeviceControllers.update(req, res);
-});
-
-router.post("/device", (req, res) => {
-  DeviceControllers.create(req, res);
-});
-
-router.delete("/device:id", (req, res) => {
-  DeviceControllers.delete(req, res);
 });
 
 module.exports = router;

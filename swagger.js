@@ -30,6 +30,16 @@ const doc = {
         Color: "azul",
         partNumber: 40293,
       },
+      devices: [
+        {
+          Id: 1,
+          categoryId: 1,
+          Color: "azul",
+          partNumber: 40293,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        },
+      ],
       categoryResponse: {
         Id: 1,
         Name: "Tablet",
@@ -45,23 +55,14 @@ const doc = {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },
-      internalError: {
-        status: 500,
-        data: { message: "Message error" },
-      },
-      deleteResponse: {
-        status: 200,
-        message: "Successfully deleted",
-      },
+      internalError: { message: "Message error" },
+      deleteResponse: { message: "Successfully deleted" },
     },
   },
 };
 
 const outputFile = "./swagger-output.json";
-const endpointsFiles = [
-  "./src/routes/index.js",
-  "./src/controllers/category.js",
-];
+const endpointsFiles = ["./src/routes/routerDoc.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
   require("./index");

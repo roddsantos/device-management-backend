@@ -13,13 +13,18 @@ module.exports = {
         primaryKey: true,
       },
       Category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: "categories",
+          key: "Id",
+        },
       },
       Color: {
         type: DataTypes.STRING(16),
         allowNull: false,
+        validate: {
+          len: [1, 16],
+        },
       },
       partNumber: {
         type: DataTypes.INTEGER,
