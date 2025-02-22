@@ -33,7 +33,7 @@ module.exports = {
     }
   },
 
-  getAll: async () => {
+  findAll: async () => {
     try {
       let categories = await Category.findAll();
       return {

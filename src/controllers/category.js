@@ -8,10 +8,10 @@ module.exports = {
       });
 
     const Name = req.body.Name;
-    const category = await CategoryServices.create(Name);
+    const result = await CategoryServices.create(Name);
 
-    res.status(category.status).json({
-      ...category.data,
+    res.status(result.status).json({
+      ...result.data,
     });
   },
 
@@ -27,10 +27,32 @@ module.exports = {
 
     const Name = req.body.category;
     const Id = req.body.id;
-    const category = await CategoryServices.update(Id, Name);
+    const result = await CategoryServices.update(Id, Name);
 
-    res.status(category.status).json({
-      ...speciality.category,
+    res.status(result.status).json({
+      ...result.category,
+    });
+  },
+
+  getAll: async (req, res) => {
+    const result = await CategoryServices.findAll();
+
+    res.status(result.status).json({
+      ...result.data,
+    });
+  },
+
+  delete: async (req, res) => {
+    if (Boolean(req.params.id))
+      return res.status(400).send({
+        message: "Id field is required",
+      });
+
+    const Id = req.params.id;
+
+    const result = await CategoryServices.delete(Id);
+    res.status(result.status).json({
+      ...result.data,
     });
   },
 };
