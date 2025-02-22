@@ -3,8 +3,8 @@ const { DeviceServices } = require("../services");
 module.exports = {
   create: async (req, res) => {
     if (
-      !Boolean(req.body.Category) ||
-      !Boolean(req.body.Color) ||
+      !Boolean(req.body.category) ||
+      !Boolean(req.body.color) ||
       !Boolean(req.body.partNumber)
     )
       return res.status(400).send({
@@ -20,9 +20,9 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    if (!Boolean(req.body.Id))
+    if (!Boolean(req.body.id))
       return res.status(400).send({
-        message: "Id field is required",
+        message: "id field is required",
       });
 
     const data = req.body;
@@ -48,9 +48,9 @@ module.exports = {
         message: "Id field is required",
       });
 
-    const Id = req.params.id;
+    const id = req.params.id;
 
-    const result = await DeviceServices.delete(Id);
+    const result = await DeviceServices.delete(id);
     res.status(result.status).json({
       ...result.data,
     });
