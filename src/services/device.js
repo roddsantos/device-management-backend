@@ -42,7 +42,7 @@ module.exports = {
             model: Category,
             as: "categoryData",
             paranoid: false,
-            attributes: ["Id", "Name"],
+            attributes: ["id", "name"],
           },
         ],
       });

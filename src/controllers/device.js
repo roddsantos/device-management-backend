@@ -38,8 +38,8 @@ module.exports = {
     }
 
     const data = req.body;
-    const Id = req.body.id;
-    const result = await DeviceServices.update(Id, data);
+    const id = req.body.id;
+    const result = await DeviceServices.update(id, data);
 
     res.status(result.status).json({
       ...result.category,
@@ -57,7 +57,7 @@ module.exports = {
   delete: async (req, res) => {
     if (!Boolean(req.params.id))
       return res.status(400).send({
-        message: "Id field is required",
+        message: "id field is required",
       });
 
     const id = req.params.id;

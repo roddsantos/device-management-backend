@@ -1,8 +1,8 @@
 const Category = require("../models/category");
 
 module.exports = {
-  create: async (Name) => {
-    const category = new Category({ Name });
+  create: async (name) => {
+    const category = new Category({ name });
 
     try {
       let result = await category.save();
@@ -18,9 +18,9 @@ module.exports = {
     }
   },
 
-  update: async (Id, Name) => {
+  update: async (id, name) => {
     try {
-      let result = await Category.update({ Name }, { where: Id });
+      let result = await Category.update({ name }, { where: id });
       return {
         status: 200,
         data: result,
@@ -48,9 +48,9 @@ module.exports = {
     }
   },
 
-  delete: async (Id) => {
+  delete: async (id) => {
     try {
-      let result = await Category.destroy({ where: { Id } });
+      await Category.destroy({ where: { id } });
       return {
         status: 200,
         data: { message: "Category successfully deleted" },

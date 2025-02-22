@@ -95,7 +95,7 @@ describe("Device controller", () => {
 
   test("PATCH /device should return 400 (no id sent)", async () => {
     const req = mockRequest();
-    req.body = { Id: 1 };
+    req.body = { id: 1 };
     const res = mockResponse();
     await DeviceControllers.update(req, res);
 
@@ -121,6 +121,6 @@ describe("Device controller", () => {
 
     expect(res.status).toHaveBeenCalledWith(400);
     expect(res.send).toHaveBeenCalledTimes(1);
-    expect(res.send).toHaveBeenCalledWith({ message: "Id field is required" });
+    expect(res.send).toHaveBeenCalledWith({ message: "id field is required" });
   });
 });

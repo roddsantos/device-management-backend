@@ -28,6 +28,16 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
           }
         },
         "requestBody": {
@@ -57,6 +67,16 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
           }
         },
         "requestBody": {
@@ -74,7 +94,7 @@
         "tags": [
           "Category"
         ],
-        "summary": "Get all cateogries",
+        "summary": "Get all categories",
         "description": "",
         "responses": {
           "200": {
@@ -127,6 +147,16 @@
               }
             },
             "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
           },
           "500": {
             "content": {
@@ -327,7 +357,7 @@
       "category": {
         "type": "object",
         "properties": {
-          "Name": {
+          "name": {
             "type": "string",
             "example": "Tablet"
           }
@@ -338,21 +368,21 @@
         "items": {
           "type": "object",
           "properties": {
-            "Id": {
+            "id": {
               "type": "number",
               "example": 1
             },
-            "Name": {
+            "name": {
               "type": "string",
               "example": "Tablet"
             },
             "createdAt": {
               "type": "string",
-              "example": "2025-02-22T19:46:52.830Z"
+              "example": "2025-02-22T22:58:29.333Z"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2025-02-22T19:46:52.830Z"
+              "example": "2025-02-22T22:58:29.333Z"
             },
             "deleteAt": {}
           }
@@ -387,11 +417,11 @@
             "category": {
               "type": "object",
               "properties": {
-                "Id": {
+                "id": {
                   "type": "number",
                   "example": 1
                 },
-                "Name": {
+                "name": {
                   "type": "string",
                   "example": "Tablet"
                 }
@@ -407,11 +437,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "2025-02-22T19:46:52.830Z"
+              "example": "2025-02-22T22:58:29.333Z"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2025-02-22T19:46:52.830Z"
+              "example": "2025-02-22T22:58:29.333Z"
             }
           }
         }
@@ -419,21 +449,21 @@
       "categoryResponse": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "number",
             "example": 1
           },
-          "Name": {
+          "name": {
             "type": "string",
             "example": "Tablet"
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T19:46:52.830Z"
+            "example": "2025-02-22T22:58:29.333Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T19:46:52.830Z"
+            "example": "2025-02-22T22:58:29.333Z"
           },
           "deleteAt": {}
         }
@@ -448,11 +478,11 @@
           "category": {
             "type": "object",
             "properties": {
-              "Id": {
+              "id": {
                 "type": "number",
                 "example": 1
               },
-              "Name": {
+              "name": {
                 "type": "string",
                 "example": "Tablet"
               }
@@ -468,11 +498,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T19:46:52.830Z"
+            "example": "2025-02-22T22:58:29.333Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T19:46:52.830Z"
+            "example": "2025-02-22T22:58:29.333Z"
           }
         }
       },
