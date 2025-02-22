@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
-const Category = sequelize.define(
-  "Category",
+const Device = sequelize.define(
+  "Device",
   {
     Id: {
       type: DataTypes.INTEGER,
@@ -10,19 +10,30 @@ const Category = sequelize.define(
       allowNull: false,
       primaryKey: true,
     },
-    Name: {
+    Category: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    Color: {
+      type: DataTypes.STRING,
+      allowNull: false,
       validate: {
-        len: [1, 128],
+        len: [1, 16],
+      },
+    },
+    partNumber: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 1,
+        max: 999999,
       },
     },
   },
   {
     timestamps: true,
-    paranoid: true,
   }
 );
 
-module.exports = Category;
+module.exports = Device;
