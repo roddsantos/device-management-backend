@@ -158,6 +158,165 @@
               }
             },
             "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Update a device",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deviceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/device"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Create a device",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deviceResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/device"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/device/{id}": {
+      "delete": {
+        "tags": [
+          "Device"
+        ],
+        "summary": "Delete a device",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/fieldRequiredResponse"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
           }
         }
       }
@@ -189,11 +348,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "2025-02-22T17:07:16.939Z"
+              "example": "2025-02-22T19:46:52.830Z"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2025-02-22T17:07:16.940Z"
+              "example": "2025-02-22T19:46:52.830Z"
             },
             "deleteAt": {}
           }
@@ -202,11 +361,11 @@
       "device": {
         "type": "object",
         "properties": {
-          "categoryId": {
+          "category": {
             "type": "number",
             "example": 1
           },
-          "Color": {
+          "color": {
             "type": "string",
             "example": "azul"
           },
@@ -221,15 +380,24 @@
         "items": {
           "type": "object",
           "properties": {
-            "Id": {
+            "id": {
               "type": "number",
               "example": 1
             },
-            "categoryId": {
-              "type": "number",
-              "example": 1
+            "category": {
+              "type": "object",
+              "properties": {
+                "Id": {
+                  "type": "number",
+                  "example": 1
+                },
+                "Name": {
+                  "type": "string",
+                  "example": "Tablet"
+                }
+              }
             },
-            "Color": {
+            "color": {
               "type": "string",
               "example": "azul"
             },
@@ -239,11 +407,11 @@
             },
             "createdAt": {
               "type": "string",
-              "example": "2025-02-22T17:07:16.940Z"
+              "example": "2025-02-22T19:46:52.830Z"
             },
             "updatedAt": {
               "type": "string",
-              "example": "2025-02-22T17:07:16.940Z"
+              "example": "2025-02-22T19:46:52.830Z"
             }
           }
         }
@@ -261,11 +429,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T17:07:16.940Z"
+            "example": "2025-02-22T19:46:52.830Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T17:07:16.940Z"
+            "example": "2025-02-22T19:46:52.830Z"
           },
           "deleteAt": {}
         }
@@ -273,15 +441,24 @@
       "deviceResponse": {
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "number",
             "example": 1
           },
-          "categoryId": {
-            "type": "number",
-            "example": 1
+          "category": {
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "number",
+                "example": 1
+              },
+              "Name": {
+                "type": "string",
+                "example": "Tablet"
+              }
+            }
           },
-          "Color": {
+          "color": {
             "type": "string",
             "example": "azul"
           },
@@ -291,11 +468,11 @@
           },
           "createdAt": {
             "type": "string",
-            "example": "2025-02-22T17:07:16.940Z"
+            "example": "2025-02-22T19:46:52.830Z"
           },
           "updatedAt": {
             "type": "string",
-            "example": "2025-02-22T17:07:16.940Z"
+            "example": "2025-02-22T19:46:52.830Z"
           }
         }
       },
@@ -314,6 +491,15 @@
           "message": {
             "type": "string",
             "example": "Successfully deleted"
+          }
+        }
+      },
+      "fieldRequiredResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "field is required"
           }
         }
       }

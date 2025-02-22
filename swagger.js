@@ -26,15 +26,18 @@ const doc = {
         },
       ],
       device: {
-        categoryId: 1,
-        Color: "azul",
+        category: 1,
+        color: "azul",
         partNumber: 40293,
       },
       devices: [
         {
-          Id: 1,
-          categoryId: 1,
-          Color: "azul",
+          id: 1,
+          category: {
+            Id: 1,
+            Name: "Tablet",
+          },
+          color: "azul",
           partNumber: 40293,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -48,15 +51,19 @@ const doc = {
         deleteAt: null,
       },
       deviceResponse: {
-        Id: 1,
-        categoryId: 1,
-        Color: "azul",
+        id: 1,
+        category: {
+          Id: 1,
+          Name: "Tablet",
+        },
+        color: "azul",
         partNumber: 40293,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },
       internalError: { message: "Message error" },
       deleteResponse: { message: "Successfully deleted" },
+      fieldRequiredResponse: { message: "field is required" },
     },
   },
 };
