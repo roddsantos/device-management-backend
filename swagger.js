@@ -26,10 +26,23 @@ const doc = {
         },
       ],
       device: {
-        categoryId: 1,
-        Color: "azul",
+        category: 1,
+        color: "azul",
         partNumber: 40293,
       },
+      devices: [
+        {
+          id: 1,
+          category: {
+            Id: 1,
+            Name: "Tablet",
+          },
+          color: "azul",
+          partNumber: 40293,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        },
+      ],
       categoryResponse: {
         Id: 1,
         Name: "Tablet",
@@ -38,30 +51,25 @@ const doc = {
         deleteAt: null,
       },
       deviceResponse: {
-        Id: 1,
-        categoryId: 1,
-        Color: "azul",
+        id: 1,
+        category: {
+          Id: 1,
+          Name: "Tablet",
+        },
+        color: "azul",
         partNumber: 40293,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       },
-      internalError: {
-        status: 500,
-        data: { message: "Message error" },
-      },
-      deleteResponse: {
-        status: 200,
-        message: "Successfully deleted",
-      },
+      internalError: { message: "Message error" },
+      deleteResponse: { message: "Successfully deleted" },
+      fieldRequiredResponse: { message: "field is required" },
     },
   },
 };
 
 const outputFile = "./swagger-output.json";
-const endpointsFiles = [
-  "./src/routes/index.js",
-  "./src/controllers/category.js",
-];
+const endpointsFiles = ["./src/routes/routerDoc.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
   require("./index");

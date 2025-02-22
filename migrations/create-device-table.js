@@ -6,31 +6,29 @@ const { DataTypes } = require("sequelize");
 module.exports = {
   async up(queryInterface) {
     await queryInterface.createTable("devices", {
-      Id: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
       },
-      Category: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      Color: {
-        type: DataTypes.STRING(16),
-        allowNull: false,
-      },
-      partNumber: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      categoryId: {
+      category: {
         type: DataTypes.INTEGER,
         references: {
           model: "categories",
           key: "Id",
         },
+      },
+      color: {
+        type: DataTypes.STRING(16),
+        allowNull: false,
+        validate: {
+          len: [1, 16],
+        },
+      },
+      partNumber: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         type: DataTypes.DATE,

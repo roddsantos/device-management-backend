@@ -5,20 +5,20 @@ const Category = require("./category");
 const Device = sequelize.define(
   "Device",
   {
-    Id: {
+    id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
       primaryKey: true,
     },
-    Category: {
+    category: {
       type: DataTypes.INTEGER,
       references: {
         model: "categories",
         key: "Id",
       },
     },
-    Color: {
+    color: {
       type: DataTypes.STRING(16),
       allowNull: false,
       validate: {
@@ -35,9 +35,12 @@ const Device = sequelize.define(
   }
 );
 
-Device.hasOne(Category, {
-  as: "categoryId",
-  foreignKey: "id",
+Category.hasMany(Device, {
+  foreignKey: "category",
+});
+Device.belongsTo(Category, {
+  as: "categoryData",
+  foreignKey: "category",
 });
 
 module.exports = Device;

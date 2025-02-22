@@ -19,9 +19,9 @@ module.exports = {
     }
   },
 
-  update: async (Id, data) => {
+  update: async (id, data) => {
     try {
-      let result = await Device.update(data, { where: Id });
+      let result = await Device.update(data, { where: id });
       return {
         status: 200,
         data: result,
@@ -39,8 +39,9 @@ module.exports = {
       let result = await Device.findAll({
         include: [
           {
-            Category: Category,
-            as: Category,
+            model: Category,
+            as: "categoryData",
+            paranoid: false,
             attributes: ["Id", "Name"],
           },
         ],
@@ -57,9 +58,9 @@ module.exports = {
     }
   },
 
-  delete: async (Id) => {
+  delete: async (id) => {
     try {
-      let result = await Device.destroy({ where: { Id } });
+      let result = await Device.destroy({ where: { id } });
       return {
         status: 200,
         data: { message: "Device successfully deleted" },
