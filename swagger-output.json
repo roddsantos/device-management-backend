@@ -1,0 +1,282 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Device Management API",
+    "description": "API info of the Device Management application"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/category": {
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Create a category",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/categoryResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/category"
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Update a category",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/categoryResponse"
+                }
+              }
+            },
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/category"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Get all cateogries",
+        "description": "",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/categories"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/category/{id}": {
+      "delete": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Delete a category given an id",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteResponse"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/internalError"
+                }
+              }
+            },
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "category": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "example": "Tablet"
+          }
+        }
+      },
+      "categories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Id": {
+              "type": "number",
+              "example": 1
+            },
+            "Name": {
+              "type": "string",
+              "example": "Tablet"
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2025-02-22T16:26:11.509Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2025-02-22T16:26:11.510Z"
+            },
+            "deleteAt": {}
+          }
+        }
+      },
+      "device": {
+        "type": "object",
+        "properties": {
+          "categoryId": {
+            "type": "number",
+            "example": 1
+          },
+          "Color": {
+            "type": "string",
+            "example": "azul"
+          },
+          "partNumber": {
+            "type": "number",
+            "example": 40293
+          }
+        }
+      },
+      "categoryResponse": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "number",
+            "example": 1
+          },
+          "Name": {
+            "type": "string",
+            "example": "Tablet"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-02-22T16:26:11.510Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-02-22T16:26:11.510Z"
+          },
+          "deleteAt": {}
+        }
+      },
+      "deviceResponse": {
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "number",
+            "example": 1
+          },
+          "categoryId": {
+            "type": "number",
+            "example": 1
+          },
+          "Color": {
+            "type": "string",
+            "example": "azul"
+          },
+          "partNumber": {
+            "type": "number",
+            "example": 40293
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-02-22T16:26:11.510Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-02-22T16:26:11.510Z"
+          }
+        }
+      },
+      "internalError": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 500
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "example": "Message error"
+              }
+            }
+          }
+        }
+      },
+      "deleteResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "number",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Successfully deleted"
+          }
+        }
+      }
+    }
+  }
+}
