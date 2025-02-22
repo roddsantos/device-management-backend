@@ -11,12 +11,11 @@ const Category = sequelize.define(
       primaryKey: true,
     },
     Name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(128),
       allowNull: false,
       unique: true,
       validate: {
-        max: 128,
-        min: 0,
+        len: [1, 128],
       },
     },
   },
