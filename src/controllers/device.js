@@ -20,7 +20,7 @@ module.exports = {
     const result = await DeviceServices.create(data);
 
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 
@@ -42,7 +42,7 @@ module.exports = {
     const result = await DeviceServices.update(id, data);
 
     res.status(result.status).json({
-      ...result.category,
+      data: result.data,
     });
   },
 
@@ -50,7 +50,7 @@ module.exports = {
     const result = await DeviceServices.findAll();
 
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 
@@ -64,7 +64,7 @@ module.exports = {
 
     const result = await DeviceServices.delete(id);
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 };
