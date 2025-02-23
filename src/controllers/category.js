@@ -11,7 +11,7 @@ module.exports = {
     const result = await CategoryServices.create(name);
 
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 
@@ -25,12 +25,12 @@ module.exports = {
         message: "id field is required",
       });
 
-    const name = req.body.category;
+    const name = req.body.name;
     const id = req.body.id;
     const result = await CategoryServices.update(id, name);
 
     res.status(result.status).json({
-      ...result.category,
+      data: result.data,
     });
   },
 
@@ -38,7 +38,7 @@ module.exports = {
     const result = await CategoryServices.findAll();
 
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 
@@ -52,7 +52,7 @@ module.exports = {
 
     const result = await CategoryServices.delete(id);
     res.status(result.status).json({
-      ...result.data,
+      data: result.data,
     });
   },
 };

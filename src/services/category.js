@@ -20,7 +20,7 @@ module.exports = {
 
   update: async (id, name) => {
     try {
-      let result = await Category.update({ name }, { where: id });
+      let result = await Category.update({ name }, { where: { id } });
       return {
         status: 200,
         data: result,
@@ -35,7 +35,9 @@ module.exports = {
 
   findAll: async () => {
     try {
-      let categories = await Category.findAll();
+      let categories = await Category.findAll({
+        order: [["updatedAt", "DESC"]],
+      });
       return {
         status: 200,
         data: categories,

@@ -30,7 +30,7 @@ router.post("/device", (req, res) => {
   DeviceControllers.create(req, res);
 });
 
-router.delete("/device:id", (req, res) => {
+router.delete("/device/:id", (req, res) => {
   DeviceControllers.delete(req, res);
 });
 

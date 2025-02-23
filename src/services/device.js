@@ -21,7 +21,7 @@ module.exports = {
 
   update: async (id, data) => {
     try {
-      let result = await Device.update(data, { where: id });
+      let result = await Device.update(data, { where: { id } });
       return {
         status: 200,
         data: result,
@@ -45,6 +45,7 @@ module.exports = {
             attributes: ["id", "name"],
           },
         ],
+        order: [["updatedAt", "DESC"]],
       });
       return {
         status: 200,
@@ -60,7 +61,7 @@ module.exports = {
 
   delete: async (id) => {
     try {
-      let result = await Device.destroy({ where: { id } });
+      await Device.destroy({ where: { id } });
       return {
         status: 200,
         data: { message: "Device successfully deleted" },
