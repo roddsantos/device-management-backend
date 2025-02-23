@@ -4,6 +4,24 @@ This is the Device Management Backend application, using Node.js
 First, create a .env file in the root app folder, with the following content:
 
 ```bash
+$ touch .env
+```
+
+To verify if the file was created, use the command
+
+```bash
+$ ls -a
+```
+
+Now, edit the .env file using the command:
+
+```bash
+$ sudo nano .env
+```
+
+And then put the content in the file:
+
+```bash
 BACKEND_URL=<URL of the this application (without port)>
 BACKEND_PORT=<Port of the this application>
 
@@ -15,6 +33,8 @@ DB_PASSWORD=<database password (if used)>
 
 NODE_ENV=development
 ```
+
+Press ctrl+o and then enter to save the file, and ctrl+x to exit the file
 
 ## DATABASE CREATION
 
@@ -46,7 +66,13 @@ $ npm run dev
 
 ## PRODUCTION SERVER
 
-If you using pm2, do the following command:
+If you using pm2, enter to the root app and do the following command to install the app packages:
+
+```bash
+$ npm install
+```
+
+Then you can start the application using pm2 package
 
 ```bash
 $ pm2 start index.js --name dm-backend
