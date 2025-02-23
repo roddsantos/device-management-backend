@@ -67,7 +67,14 @@ $ npm run dev
 
 ## PRODUCTION SERVER
 
-If you using pm2, enter to the root app and do the following command to install the app packages:
+An EC2 server was used for the production, so be sure to do the following in the EC2 command prompt
+If you using pm2, do the following command to install pm2 globally:
+
+```bash
+$ npm install -g pm2
+```
+
+Do the command to install the npm packages:
 
 ```bash
 $ npm install
