@@ -23,6 +23,7 @@ And then put the content in the file:
 
 ```bash
 BACKEND_URL=<URL of the this application (without port)>
+FRONTEND_URL=<URL of the frontend application, for CORS issues>
 BACKEND_PORT=<Port of the this application>
 
 DB_HOST=<database host>

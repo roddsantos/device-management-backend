@@ -8,7 +8,7 @@ const PORT = process.env.BACKEND_PORT || 3001;
 
 // cors config
 const corsOptions = {
-  origin: ["http://localhost:4200", process.env.BACKEND_URL],
+  origin: ["http://localhost:4200", process.env.FRONTEND_URL],
   optionsSuccessStatus: 200,
   methods: ["GET", "PATCH", "POST", "DELETE", "HEAD", "OPTIONS"],
   allowedHeaders: [
