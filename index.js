@@ -24,6 +24,11 @@ app.use(cors(corsOptions));
 // Routes config
 const routes = require("./src/routes/index");
 app.use("/", routes);
+app.get("/", (req, res) => {
+  res.send(
+    `Device Management server. To see routes documentation, go to ${process.env.BACKEND_URL}:${process.env.BACKEND_PORT}/docs`
+  );
+});
 
 //Swagger config
 const swaggerUi = require("swagger-ui-express");
